@@ -6,7 +6,7 @@ This is a shell script that utilizes the OpenAI GPT language model to generate t
 
 Before using this script, ensure that you have the following requirements:
 
-- An OpenAI API key. You can obtain one from the OpenAI website.
+- An OpenAI API key. You can obtain one from the OpenAI website: [Get API key here](https://beta.openai.com/signup/)
 - The `curl` and `jq` command-line tools installed. You can install them using your package manager (e.g., `pacman`, `apt`, `brew`, `yum`).
 
 ## Usage

@@ -50,6 +50,11 @@ The script supports the following options:
   ./gpt.sh 'How much is the fish?' --model=gpt-4
   ```
 
+- Read input from input.txt and write to output.txt:
+  ```
+  input=$(cat input.txt); ./gpt.sh "$input" --system="Summarize this text." > output.txt
+  ```
+
 - Example: use `find` to work on multiple files, applying a prompt from `prompt.txt` before. Also use a system message and the model with the largest context size:
   ```
   find -name "recipe_*.txt" -exec sh -c 'content=$(cat "$1"); result="$(cat ~/prompt.txt) $content"; gpt.sh "$result" --system="You are a master chef for Indian cuisine." --model=gpt-4-32k > "${1}_out.out"' sh {} \;

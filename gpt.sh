@@ -17,6 +17,9 @@ if [ $# -lt 1 ]; then
     echo "Using a different model:"
     echo "> gpt.sh 'How much is the fish?' --model=gpt-4-32k"
     echo ""
+    echo "Read input from input.txt and write to output.txt:"
+    echo "> input=\$(cat input.txt); ./gpt.sh \"\$input\" --system=\"Summarize this text.\" > output.txt"
+    echo ""
     echo "Example using find for multiple files, for each add a prompt from prompt.txt. Also use a system message and the model with the largest context size:"
     echo "> find -name \"recipe_*.txt\" -exec sh -c 'content=\$(cat \"\$1\"); result=\"\$(cat ~/prompt.txt) \$content\"; gpt.sh  \"\$result\" --system=\"You are a master chef for Indian cuisine.\" --model=gpt-4-32k> \"\${1}_out.out\"' sh {} \;"
     echo ""
@@ -65,7 +68,8 @@ SYSTEMMSG="${system:-You are a helpful assistant.}"
 # Set the max number of tokens to generate (approx) as whole integer
 num_tokens=$(echo "$PROMPT $SYSTEMMSG" | wc -w)
 #TOKEN_COUNT=$(echo "((4000 - ($num_tokens*1.8)))/1" | bc) # for bc, 123.45/1 equals 123
-TOKEN_COUNT=$(echo "((4000 - ($num_tokens*2.6)))/1" | bc) # for bc, 123.45/1 equals 123
+#TOKEN_COUNT=$(echo "((4000 - ($num_tokens*2.6)))/1" | bc) # for bc, 123.45/1 equals 123
+TOKEN_COUNT=$(echo "((4000 - ($num_tokens*2.8)))/1" | bc) # for bc, 123.45/1 equals 123
 
 # Set the temperature
 TEMPERATURE=0.5

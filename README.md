@@ -1,4 +1,4 @@
-# Shell Script README
+# gpt.sh
 
 This is a shell script that utilizes the OpenAI GPT language model to generate text based on a prompt. It provides a convenient way to interact with the GPT model and retrieve generated text.
 

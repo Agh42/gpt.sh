@@ -87,7 +87,12 @@ PROMPTJSON=$(jq -n --arg multiline "$PROMPT" '$multiline | @json')
 OUTPUT=$(curl -sk -X POST -H "Authorization: Bearer $OPENAI_API_KEY" -H "Content-Type: application/json" -d "{\"model\":\"$MODEL\",\"messages\":[{\"role\":\"system\",\"content\":\"$SYSTEMMSG\"},{\"role\":\"user\",\"content\": $PROMPTJSON}],\"temperature\":$TEMPERATURE,\"top_p\":$TOP_P,\"frequency_penalty\":$FREQUENCY,\"presence_penalty\":$PRESENCE,\"max_tokens\":$TOKEN_COUNT}" https://api.openai.com/v1/chat/completions)
 
 # Extract the text from the response
-OUTPUT=$(echo "$OUTPUT" | jq -r '.choices[0].message.content')
+ERROR_MESSAGE=$(echo "$OUTPUT" | jq -r '.error.message')
+if [ "$ERROR_MESSAGE" != "null" ]; then
+    OUTPUT=$(echo "$OUTPUT" | jq -r '.error.message')
+else
+    OUTPUT=$(echo "$OUTPUT" | jq -r '.choices[0].message.content')
+fi
 
 # Print the output
 echo "$OUTPUT"

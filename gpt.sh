@@ -1,12 +1,8 @@
 #!/bin/bash
+
+# uncomment for debugging:
 #set -x
 #set -v
-
-## use prompt.txt and call for data1, data2, data3...:
-# for file in data*; do content=$(cat $file); result="$(cat prompt.txt) $content"; gpt.sh "$result" > "${file}_out.txt"; done
-
-## use find for multiple files, with prompt from prompt.txt and system message:
-# find -name "*.txt" -exec sh -c 'content=$(cat "$1"); result="$(cat ~/prompt.txt) $content"; gpt.sh  "$result" "You are a mster chef.." > "${1}_out.out"' sh {} \;
 
 
 if [ $# -lt 1 ]; then

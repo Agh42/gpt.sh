@@ -26,7 +26,7 @@ if [ $# -lt 1 ]; then
     echo "Expects your API Key in the environment: export OPENAI_API_KEY=<yourkey>"
     echo ""
     echo "OPTIONS:"
-    echo "--model=[gpt-3.5-turbo|gpt-4|gpt-4-32k|gpt-4-1106-preview]"
+    echo "--model=[gpt-4o-mini|gpt-4o|gpt-3.5-turbo|gpt-4|gpt-4-32k|gpt-4-1106-preview]"
     echo "--system=\"You are a helpful assistant.\""
     exit 1
 fi
@@ -57,7 +57,8 @@ done
 	#MODEL="gpt-4" 
 	#MODEL="gpt-4-32k" #4x context length
 	#MODEL="gpt-3.5-turbo"
-	MODEL="gpt-4o"
+	#MODEL="gpt-4o"
+	MODEL="gpt-4o-mini" # cheapest fastest for lightweight tasks
 	#MODEL="${model:-gpt-4}"
 SYSTEMMSG="${system:-You are a helpful assistant.}"
 

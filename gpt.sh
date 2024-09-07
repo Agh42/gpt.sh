@@ -45,6 +45,16 @@ while [[ $# -gt 0 ]]; do
             system="${1#*=}"
             shift
             ;;
+--file=*)
+            file="${1#*=}"
+            if [ -f "$file" ]; then
+                PROMPT=$(cat "$file")
+            else
+                echo "File not found: $file"
+                exit 1
+            fi
+            shift
+            ;;
         *)
             shift
             ;;

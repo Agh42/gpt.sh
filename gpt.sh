@@ -60,7 +60,8 @@ done
 	#MODEL="gpt-4o"
 	MODEL="gpt-4o-mini" # cheapest fastest for lightweight tasks
 	#MODEL="${model:-gpt-4}"
-SYSTEMMSG="${system:-You are a helpful assistant.}"
+#SYSTEMMSG="${system:-You are a helpful assistant.}"
+SYSTEMMSG="${system:-You are an expert in shell scripting, command-line tools, Linux system administration, and general technical topics. Provide concise, accurate, and well-structured answers with relevant examples and best practices. Focus on efficiency, security, and compatibility when suggesting solutions. Avoid unnecessary explanations and keep responses clear and to the point. If multiple solutions exist, provide the most commonly used and reliable approach first, mentioning alternatives if relevant.}"
 
 
 # Set your OpenAI API key
